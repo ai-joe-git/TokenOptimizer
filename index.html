@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TokenOptimizer Gateway | Enterprise AI Cost Optimization</title>
+    <meta name="description" content="Reduce LLM API costs by 50-80% with TokenOptimizer Gateway. Smart routing, intelligent caching, and multi-provider fallback for OpenAI, Anthropic, and more.">
+    
+    <!-- Tailwind CSS (via CDN for immediate use) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0A192F',
+                            primary: '#0070F3',
+                            light: '#E6F0FF',
+                            accent: '#64FFDA',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .glass-dark {
+            background: rgba(10, 25, 47, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Smooth Animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #0070F3 0%, #64FFDA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center space-x-2">
+                        <i class="fa-solid fa-bolt text-brand-primary text-2xl"></i>
+                        <span class="font-bold text-xl text-brand-dark">TokenOptimizer</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#problem" class="text-slate-600 hover:text-brand-primary font-medium transition">Why Us</a>
+                    <a href="#solution" class="text-slate-600 hover:text-brand-primary font-medium transition">Features</a>
+                    <a href="#roi" class="text-slate-600 hover:text-brand-primary font-medium transition">ROI</a>
+                    <a href="#pricing" class="text-slate-600 hover:text-brand-primary font-medium transition">Pricing</a>
+                    <a href="#contact" class="bg-brand-primary text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700 transition shadow-lg hover:shadow-xl">
+                        Request Demo
+                    </a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-brand-primary">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#problem" class="block px-3 py-2 text-slate-600 hover:text-brand-primary">Why Us</a>
+                <a href="#solution" class="block px-3 py-2 text-slate-600 hover:text-brand-primary">Features</a>
+                <a href="#roi" class="block px-3 py-2 text-slate-600 hover:text-brand-primary">ROI</a>
+                <a href="#pricing" class="block px-3 py-2 text-slate-600 hover:text-brand-primary">Pricing</a>
+                <a href="#contact" class="block px-3 py-2 text-brand-primary font-medium">Request Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-50 to-blue-50 -z-10"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-blue-100/30 to-transparent -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-brand-primary text-sm font-medium mb-6">
+                        <span class="flex h-2 w-2 rounded-full bg-brand-primary mr-2"></span>
+                        Enterprise AI Infrastructure
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-bold text-brand-dark leading-tight mb-6">
+                        Reduce LLM API Costs <br>
+                        <span class="gradient-text">by 50-80%</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-8 max-w-lg">
+                        Stop unpredictable costs from spiraling out of control. TokenOptimizer Gateway automatically routes your AI requests to the cheapest, fastest provider.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-white bg-brand-primary hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all">
+                            Get Started
+                        </a>
+                        <a href="#roi" class="inline-flex justify-center items-center px-8 py-4 border border-slate-300 text-base font-medium rounded-lg text-slate-700 bg-white hover:bg-slate-50 shadow-sm hover:shadow-md transition-all">
+                            Calculate ROI
+                        </a>
+                    </div>
+                </div>
+                <div class="relative fade-in delay-100">
+                    <!-- Dashboard Mockup -->
+                    <div class="glass rounded-2xl p-6 shadow-2xl border border-slate-200">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="text-xs text-slate-400 font-mono">token-optimizer.io/dashboard</div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-4 bg-white rounded-lg shadow-sm">
+                                <div>
+                                    <div class="text-sm text-slate-500">OpenAI GPT-4</div>
+                                    <div class="text-lg font-bold text-brand-dark">€0.03/1k tokens</div>
+                                </div>
+                                <div class="text-green-500 text-sm font-medium"><i class="fa-solid fa-check-circle"></i> Optimized</div>
+                            </div>
+                            <div class="flex justify-between items-center p-4 bg-white rounded-lg shadow-sm">
+                                <div>
+                                    <div class="text-sm text-slate-500">Anthropic Claude</div>
+                                    <div class="text-lg font-bold text-brand-dark">€0.02/1k tokens</div>
+                                </div>
+                                <div class="text-blue-500 text-sm font-medium"><i class="fa-solid fa-arrow-right"></i> Active</div>
+                            </div>
+                            <div class="flex justify-between items-center p-4 bg-white rounded-lg shadow-sm">
+                                <div>
+                                    <div class="text-sm text-slate-500">Google Gemini</div>
+                                    <div class="text-lg font-bold text-brand-dark">€0.015/1k tokens</div>
+                                </div>
+                                <div class="text-green-500 text-sm font-medium"><i class="fa-solid fa-check-circle"></i> Cheapest</div>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-slate-200">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-500">Total Savings Today</span>
+                                <span class="font-bold text-brand-primary">€1,240.50</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-dark mb-4">The Problem with Direct AI Billing</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Most companies are bleeding money on AI costs without realizing it. Unpredictable bills, rate limits, and vendor lock-in are killing your ROI.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-lg transition-all border border-slate-100">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-chart-line text-red-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Spiraling Costs</h3>
+                    <p class="text-slate-600">Monthly API costs grow unpredictably as usage scales, making budgeting difficult.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-lg transition-all border border-slate-100">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-bolt text-yellow-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Rate Limits</h3>
+                    <p class="text-slate-600">Hitting API rate limits interrupts production workflows and frustrates users.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-lg transition-all border border-slate-100">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-lock text-brand-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Vendor Lock-in</h3>
+                    <p class="text-slate-600">Sticking to one provider limits flexibility and leaves money on the table.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-brand-dark mb-6">The TokenOptimizer Solution</h2>
+                    <p class="text-slate-600 mb-8">Our intelligent gateway acts as a layer between your applications and AI providers, optimizing every request in real-time.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 bg-brand-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fa-solid fa-route text-brand-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-brand-dark">Smart Cost Routing</h4>
+                                <p class="text-slate-600">Automatically chooses the cheapest provider for each request based on latency, cost, and availability.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 bg-brand-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fa-solid fa-memory text-brand-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-brand-dark">Intelligent Caching</h4>
+                                <p class="text-slate-600">Eliminates redundant API calls for repeated prompts, saving up to 40% on token usage.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 bg-brand-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fa-solid fa-arrows-rotate text-brand-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-brand-dark">Multi-Provider Fallback</h4>
+                                <p class="text-slate-600">Never hit downtime with automatic switching. If one provider is down, we switch instantly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-brand-primary to-blue-400 rounded-2xl transform rotate-3 opacity-20"></div>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Dashboard Analytics" class="relative rounded-2xl shadow-xl border border-slate-200">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Providers -->
+    <section class="py-12 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-sm font-medium text-slate-500 mb-8 uppercase tracking-wider">Supported Providers</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
+                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">OpenAI</div>
+                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">Anthropic</div>
+                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">Google</div>
+                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">Mistral</div>
+                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">DeepSeek</div>
+                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">Groq</div>
+                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">100+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section id="roi" class="py-20 bg-brand-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">See Your Potential Savings</h2>
+                <p class="text-slate-300">Enter your current monthly AI spend to see your annual savings.</p>
+            </div>
+            <div class="max-w-3xl mx-auto glass-dark rounded-2xl p-8 md:p-12">
+                <div class="mb-8">
+                    <label for="monthly-spend" class="block text-sm font-medium text-slate-300 mb-2">Monthly API Spend (EUR)</label>
+                    <input type="range" id="monthly-spend" min="1000" max="50000" step="1000" value="10000" class="w-full h-2 bg-slate-600 rounded-lg appearance-none cursor-pointer accent-brand-primary">
+                    <div class="mt-2 text-center">
+                        <span id="display-spend" class="text-4xl font-bold text-white">€10,000</span>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div class="p-4 bg-slate-800/50 rounded-lg">
+                        <div class="text-sm text-slate-400 mb-1">Annual Spend</div>
+                        <div id="annual-spend" class="text-2xl font-bold text-white">€120,000</div>
+                    </div>
+                    <div class="p-4 bg-brand-primary/20 rounded-lg border border-brand-primary/30">
+                        <div class="text-sm text-brand-primary mb-1">Annual Savings (60%)</div>
+                        <div id="annual-savings" class="text-2xl font-bold text-white">€72,000</div>
+                    </div>
+                    <div class="p-4 bg-slate-800/50 rounded-lg">
+                        <div class="text-sm text-slate-400 mb-1">New Annual Cost</div>
+                        <div id="new-annual-cost" class="text-2xl font-bold text-white">€48,000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-dark mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Choose the plan that fits your scale. All plans include core optimization features.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Starter -->
+                <div class="rounded-2xl border border-slate-200 p-8 hover:shadow-lg transition-all bg-white">
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Starter</h3>
+                    <p class="text-slate-500 mb-6">For small teams and startups.</p>
+                    <div class="text-4xl font-bold text-brand-dark mb-6">€5,000<span class="text-lg text-slate-500 font-normal">/year</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-slate-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> Up to 1M requests/month</li>
+                        <li class="flex items-center text-slate-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> Core Providers</li>
+                        <li class="flex items-center text-slate-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> Basic Analytics</li>
+                        <li class="flex items-center text-slate-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> Email Support</li>
+                    </ul>
+                    <a href="#contact" class="block w-full py-3 px-4 text-center border border-brand-primary text-brand-primary font-medium rounded-lg hover:bg-blue-50 transition">Request Quote</a>
+                </div>
+                
+                <!-- Enterprise (Highlighted) -->
+                <div class="rounded-2xl border-2 border-brand-primary p-8 shadow-xl bg-white relative transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 bg-brand-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">MOST POPULAR</div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Enterprise</h3>
+                    <p class="text-slate-500 mb-6">For mid-sized companies.</p>
+                    <div class="text-4xl font-bold text-brand-dark mb-6">€15,000<span class="text-lg text-slate-500 font-normal">/year</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-slate-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> Up to 10M requests/month</li>
+                        <li class="flex items-center text-slate-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> All Providers</li>
+                        <li class="flex items-center text-slate-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> Advanced Analytics</li>
+                        <li class="flex items-center text-slate-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> Priority Support</li>
+                        <li class="flex items-center text-slate-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> Custom Routing Rules</li>
+                    </ul>
+                    <a href="#contact" class="block w-full py-3 px-4 text-center bg-brand-primary text-white font-medium rounded-lg hover:bg-blue-700 transition shadow-lg">Request Invoice</a>
+                </div>
+
+                <!-- Custom -->
+                <div class="rounded-2xl border border-slate-200 p-8 hover:shadow-lg transition-all bg-white">
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Custom</h3>
+                    <p class="text-slate-500 mb-6">For large enterprises.</p>
+                    <div class="text-4xl font-bold text-brand-dark mb-6">Contact Us</div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-slate-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> Unlimited requests</li>
+                        <li class="flex items-center text-slate-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> Dedicated Infrastructure</li>
+                        <li class="flex items-center text-slate-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> SLA Guarantee</li>
+                        <li class="flex items-center text-slate-600"><i class="fa-solid fa-check text-green-500 mr-3"></i> Account Manager</li>
+                    </ul>
+                    <a href="#contact" class="block w-full py-3 px-4 text-center border border-brand-primary text-brand-primary font-medium rounded-lg hover:bg-blue-50 transition">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Invoice Request Section -->
+    <section id="contact" class="py-20 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-brand-dark mb-2">Request a Demo or Invoice</h2>
+                    <p class="text-slate-600">Fill out the form below. We'll send you a demo link or a tailored invoice.</p>
+                </div>
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition" placeholder="john@company.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="company" class="block text-sm font-medium text-slate-700 mb-1">Company</label>
+                        <input type="text" id="company" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition" placeholder="Company Name">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Message (Optional)</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition" placeholder="I'm interested in the Enterprise plan..."></textarea>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="invoice" class="w-4 h-4 text-brand-primary border-slate-300 rounded focus:ring-brand-primary">
+                        <label for="invoice" class="ml-2 text-sm text-slate-600">Send me an invoice directly.</label>
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-brand-primary text-white font-bold rounded-lg hover:bg-blue-700 transition shadow-lg">
+                        Submit Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa-solid fa-bolt text-brand-primary text-xl"></i>
+                        <span class="font-bold text-lg text-white">TokenOptimizer</span>
+                    </div>
+                    <p class="text-sm max-w-xs">Enterprise AI Cost Optimization Platform. Reduce LLM API costs by 50-80% with smart routing and intelligent caching.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm">&copy; 2026 TokenOptimizer LLC. All rights reserved.</p>
+                <p class="text-sm mt-2 md:mt-0">London, United Kingdom</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.add('bg-white/90');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.remove('bg-white/90');
+            }
+        });
+
+        // ROI Calculator Logic
+        const spendSlider = document.getElementById('monthly-spend');
+        const displaySpend = document.getElementById('display-spend');
+        const annualSpendEl = document.getElementById('annual-spend');
+        const annualSavingsEl = document.getElementById('annual-savings');
+        const newAnnualCostEl = document.getElementById('new-annual-cost');
+
+        function updateROI() {
+            const monthly = parseInt(spendSlider.value);
+            const annual = monthly * 12;
+            const savings = annual * 0.6; // 60% savings
+            const newCost = annual - savings;
+
+            displaySpend.textContent = `€${monthly.toLocaleString()}`;
+            annualSpendEl.textContent = `€${annual.toLocaleString()}`;
+            annualSavingsEl.textContent = `€${savings.toLocaleString()}`;
+            newAnnualCostEl.textContent = `€${newCost.toLocaleString()}`;
+        }
+
+        spendSlider.addEventListener('input', updateROI);
+        
+        // Initial calculation
+        updateROI();
+
+        // Form Submission
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const isInvoice = document.getElementById('invoice').checked;
+            
+            if(isInvoice) {
+                alert(`Thank you, ${name}. We will send the invoice to your registered address shortly.`);
+            } else {
+                alert(`Thank you, ${name}. We will send the demo link to your email.`);
+            }
+            form.reset();
+        });
+    </script>
+</body>
+</html>

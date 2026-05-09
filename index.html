@@ -4,17 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TokenOptimizer Gateway | Enterprise AI Cost Optimization</title>
-    <meta name="description" content="Reduce LLM API costs by 50-80% with TokenOptimizer Gateway. Smart routing, intelligent caching, and multi-provider fallback for OpenAI, Anthropic, and more.">
+    <meta name="description" content="Reduce LLM API costs by 50-80% with TokenOptimizer Gateway. Smart routing, intelligent caching, and multi-provider fallback.">
     
-    <!-- Tailwind CSS (via CDN for immediate use) -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tokenoptimizer.io/">
+    <meta property="og:title" content="TokenOptimizer - Reduce LLM Costs by 80%">
+    <meta property="og:description" content="Smart routing and intelligent caching for OpenAI, Anthropic, and more. Save thousands on API bills.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TokenOptimizer - Reduce LLM Costs by 80%">
+    <meta name="twitter:description" content="Smart routing and intelligent caching for OpenAI, Anthropic, and more.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts: Inter (Preloaded for performance) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -54,11 +67,30 @@
         
         /* Smooth Animations */
         .fade-in {
-            animation: fadeIn 0.8s ease-in-out;
+            animation: fadeIn 0.8s ease-in-out forwards;
+            opacity: 0;
         }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Pulse Animation for Live Traffic */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .pulse-dot::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: inherit;
+            border-radius: 50%;
+            animation: pulse-ring 2s infinite;
         }
 
         /* Gradient Text */
@@ -67,6 +99,19 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* Code Block Styling */
+        .code-block {
+            font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        .code-keyword { color: #c678dd; }
+        .code-string { color: #98c379; }
+        .code-func { color: #61afef; }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased">
@@ -84,6 +129,7 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#problem" class="text-slate-600 hover:text-brand-primary font-medium transition">Why Us</a>
                     <a href="#solution" class="text-slate-600 hover:text-brand-primary font-medium transition">Features</a>
+                    <a href="#how-it-works" class="text-slate-600 hover:text-brand-primary font-medium transition">How it Works</a>
                     <a href="#roi" class="text-slate-600 hover:text-brand-primary font-medium transition">ROI</a>
                     <a href="#pricing" class="text-slate-600 hover:text-brand-primary font-medium transition">Pricing</a>
                     <a href="#contact" class="bg-brand-primary text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700 transition shadow-lg hover:shadow-xl">
@@ -92,18 +138,18 @@
                 </div>
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-brand-primary">
+                    <button id="mobile-menu-btn" aria-label="Toggle menu" class="text-slate-600 hover:text-brand-primary">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200">
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200 absolute w-full shadow-lg">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#problem" class="block px-3 py-2 text-slate-600 hover:text-brand-primary">Why Us</a>
                 <a href="#solution" class="block px-3 py-2 text-slate-600 hover:text-brand-primary">Features</a>
-                <a href="#roi" class="block px-3 py-2 text-slate-600 hover:text-brand-primary">ROI</a>
+                <a href="#how-it-works" class="block px-3 py-2 text-slate-600 hover:text-brand-primary">How it Works</a>
                 <a href="#pricing" class="block px-3 py-2 text-slate-600 hover:text-brand-primary">Pricing</a>
                 <a href="#contact" class="block px-3 py-2 text-brand-primary font-medium">Request Demo</a>
             </div>
@@ -119,7 +165,10 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="fade-in">
                     <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-brand-primary text-sm font-medium mb-6">
-                        <span class="flex h-2 w-2 rounded-full bg-brand-primary mr-2"></span>
+                        <span class="relative flex h-2 w-2 mr-2">
+                          <span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-primary"></span>
+                        </span>
                         Enterprise AI Infrastructure
                     </div>
                     <h1 class="text-4xl lg:text-6xl font-bold text-brand-dark leading-tight mb-6">
@@ -180,6 +229,21 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Strip -->
+    <section class="py-10 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-sm font-medium text-slate-400 mb-6 uppercase tracking-wider">Trusted by forward-thinking engineering teams</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <!-- Simple SVG Logos for Performance -->
+                <svg class="h-8" viewBox="0 0 100 30" fill="currentColor"><path d="M10,15 L20,5 L30,15 L20,25 Z" /><text x="35" y="20" font-size="12" font-weight="bold">Acme AI</text></svg>
+                <svg class="h-8" viewBox="0 0 100 30" fill="currentColor"><circle cx="15" cy="15" r="10" /><text x="35" y="20" font-size="12" font-weight="bold">Globex</text></svg>
+                <svg class="h-8" viewBox="0 0 100 30" fill="currentColor"><rect x="5" y="5" width="20" height="20" /><text x="35" y="20" font-size="12" font-weight="bold">Soylent</text></svg>
+                <svg class="h-8" viewBox="0 0 100 30" fill="currentColor"><polygon points="15,5 25,25 5,25" /><text x="35" y="20" font-size="12" font-weight="bold">Initech</text></svg>
+                <svg class="h-8" viewBox="0 0 100 30" fill="currentColor"><path d="M10,10 Q20,5 30,10 T50,10" stroke="currentColor" fill="none"/><text x="35" y="20" font-size="12" font-weight="bold">Umbrella</text></svg>
             </div>
         </div>
     </section>
@@ -263,18 +327,125 @@
         </div>
     </section>
 
-    <!-- Supported Providers -->
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-dark mb-4">How It Works</h2>
+                <p class="text-slate-600">Get started in minutes. No code changes required.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <!-- Connector Line (Desktop) -->
+                <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-slate-100 -z-10 transform scale-x-75"></div>
+                
+                <!-- Step 1 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-100 shadow-sm text-center">
+                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-primary text-2xl font-bold border-4 border-white shadow-sm">1</div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Connect</h3>
+                    <p class="text-slate-600 text-sm">Update your API endpoint URL to point to TokenOptimizer. Your existing keys work instantly.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-100 shadow-sm text-center">
+                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-primary text-2xl font-bold border-4 border-white shadow-sm">2</div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Optimize</h3>
+                    <p class="text-slate-600 text-sm">We analyze your traffic, cache repeated prompts, and route to the cheapest provider in real-time.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-100 shadow-sm text-center">
+                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-primary text-2xl font-bold border-4 border-white shadow-sm">3</div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Save</h3>
+                    <p class="text-slate-600 text-sm">View your savings dashboard and watch your monthly bill drop by 50-80% immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developer Experience / Code Snippet -->
+    <section class="py-20 bg-brand-dark text-white overflow-hidden relative">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">Built for Developers</h2>
+                    <p class="text-slate-300 mb-6 text-lg">
+                        Drop-in replacement for OpenAI, Anthropic, and Google APIs. 
+                        Zero configuration needed for standard use cases.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-slate-300">
+                            <i class="fa-solid fa-check text-brand-accent mr-3"></i> 
+                            Compatible with LangChain, LlamaIndex & more
+                        </li>
+                        <li class="flex items-center text-slate-300">
+                            <i class="fa-solid fa-check text-brand-accent mr-3"></i> 
+                            Supports streaming & non-streaming responses
+                        </li>
+                        <li class="flex items-center text-slate-300">
+                            <i class="fa-solid fa-check text-brand-accent mr-3"></i> 
+                            Detailed logging & analytics dashboard
+                        </li>
+                    </ul>
+                </div>
+                <div class="code-block shadow-2xl border border-slate-700">
+                    <div class="flex items-center gap-2 mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="ml-2 text-xs text-slate-400">integration.js</span>
+                    </div>
+                    <pre class="text-sm md:text-base"><code><span class="code-keyword">import</span> { OpenAI } <span class="code-keyword">from</span> <span class="code-string">'openai'</span>;
+
+<span class="code-keyword">const</span> client = <span class="code-keyword">new</span> <span class="code-func">OpenAI</span>({
+  <span class="text-slate-500">// Point to our gateway instead</span>
+  <span class="text-slate-500">// base URL: https://api.tokenoptimizer.com/v1</span>
+  apiKey: process.env.<span class="text-slate-500">TOKEN_OPTIMIZER_KEY</span>,
+});
+
+<span class="code-keyword">const</span> response = <span class="code-keyword">await</span> client.chat.completions.<span class="code-func">create</span>({
+  model: <span class="code-string">"gpt-4-turbo"</span>,
+  messages: [{ role: <span class="code-string">"user"</span>, content: <span class="code-string">"Hello!"</span> }],
+});
+
+<span class="text-slate-500">// We automatically cached & routed to the cheapest provider</span>
+<span class="code-func">console</span>.log(response.usage); 
+<span class="text-slate-500">// { total_tokens: 50, cost: 0.001 } </span></code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Providers (Visual Logos) -->
     <section class="py-12 bg-white border-y border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p class="text-center text-sm font-medium text-slate-500 mb-8 uppercase tracking-wider">Supported Providers</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
-                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">OpenAI</div>
-                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">Anthropic</div>
-                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">Google</div>
-                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">Mistral</div>
-                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">DeepSeek</div>
-                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">Groq</div>
-                <div class="text-2xl font-bold text-slate-400 hover:text-brand-primary transition">100+</div>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-80">
+                <!-- OpenAI -->
+                <div class="flex items-center space-x-2 group cursor-pointer">
+                    <i class="fa-brands fa-openai text-3xl text-slate-600 group-hover:text-brand-primary transition"></i>
+                    <span class="font-bold text-slate-600 group-hover:text-brand-primary transition">OpenAI</span>
+                </div>
+                <!-- Anthropic -->
+                <div class="flex items-center space-x-2 group cursor-pointer">
+                    <i class="fa-solid fa-brain text-3xl text-slate-600 group-hover:text-brand-primary transition"></i>
+                    <span class="font-bold text-slate-600 group-hover:text-brand-primary transition">Anthropic</span>
+                </div>
+                <!-- Google -->
+                <div class="flex items-center space-x-2 group cursor-pointer">
+                    <i class="fa-brands fa-google text-3xl text-slate-600 group-hover:text-brand-primary transition"></i>
+                    <span class="font-bold text-slate-600 group-hover:text-brand-primary transition">Google</span>
+                </div>
+                <!-- Mistral -->
+                <div class="flex items-center space-x-2 group cursor-pointer">
+                    <div class="w-8 h-8 border-2 border-slate-600 rounded flex items-center justify-center font-bold text-slate-600 group-hover:border-brand-primary group-hover:text-brand-primary transition">M</div>
+                    <span class="font-bold text-slate-600 group-hover:text-brand-primary transition">Mistral</span>
+                </div>
+                <!-- Groq -->
+                <div class="flex items-center space-x-2 group cursor-pointer">
+                    <div class="w-8 h-8 bg-slate-600 rounded-full flex items-center justify-center text-white text-xs font-bold group-hover:bg-brand-primary transition">G</div>
+                    <span class="font-bold text-slate-600 group-hover:text-brand-primary transition">Groq</span>
+                </div>
             </div>
         </div>
     </section>
@@ -285,6 +456,7 @@
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold mb-4">See Your Potential Savings</h2>
                 <p class="text-slate-300">Enter your current monthly AI spend to see your annual savings.</p>
+                <p class="text-sm text-slate-400 mt-2">*Based on average client usage of OpenAI + Anthropic</p>
             </div>
             <div class="max-w-3xl mx-auto glass-dark rounded-2xl p-8 md:p-12">
                 <div class="mb-8">
@@ -367,6 +539,45 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-brand-dark text-center mb-12">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-brand-dark">Does adding a gateway add latency?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-slate-600">
+                        No. Our gateway is designed for speed. In fact, caching often reduces latency by serving responses directly from memory without hitting the LLM provider.
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-brand-dark">Can I use my own API keys?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-slate-600">
+                        Yes! You can bring your own keys (BYOK) for OpenAI, Anthropic, etc., and we will route them through our optimization layer. You pay the provider directly, and us for the optimization.
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-brand-dark">How does caching work?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-slate-600">
+                        When a request matches a previous prompt (same text and parameters), we serve the cached response instantly, saving you the cost of re-processing tokens.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact / Invoice Request Section -->
     <section id="contact" class="py-20 bg-slate-50">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -379,11 +590,11 @@
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition" placeholder="John Doe">
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition" placeholder="John Doe" required>
                         </div>
                         <div>
                             <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition" placeholder="john@company.com">
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition" placeholder="john@company.com" required>
                         </div>
                     </div>
                     <div>
@@ -487,6 +698,25 @@
         // Initial calculation
         updateROI();
 
+        // FAQ Accordion Logic
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                
+                // Toggle current
+                content.classList.toggle('hidden');
+                
+                // Rotate icon
+                if (content.classList.contains('hidden')) {
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
         // Form Submission
         const form = document.getElementById('contact-form');
         form.addEventListener('submit', (e) => {
@@ -501,6 +731,24 @@
             }
             form.reset();
         });
+    </script>
+
+    <!-- JSON-LD Schema for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "TokenOptimizer Gateway",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "5000.00",
+        "priceCurrency": "EUR"
+      },
+      "description": "Reduce LLM API costs by 50-80% with smart routing and intelligent caching.",
+      "featureList": "Smart Cost Routing, Intelligent Caching, Multi-Provider Fallback"
+    }
     </script>
 </body>
 </html>

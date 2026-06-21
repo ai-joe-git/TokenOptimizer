@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TokenOptimizer | Stop Wasting Money On AI</title>
-  <meta name="description" content="TokenOptimizer identifies and eliminates unnecessary AI spend across OpenAI, Anthropic, Gemini, Cursor, copilots, agents and internal LLM systems." />
+  <title>TokenOptimizer by BlackRiver AI | AI Cost Audit & Optimization Platform</title>
+  <meta name="description" content="TokenOptimizer by BlackRiver AI identifies, measures and eliminates unnecessary AI spend across OpenAI, Anthropic, Gemini, copilots, agents, RAG systems and internal LLM infrastructure." />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tokenoptimizer.io/" />
-  <meta property="og:title" content="TokenOptimizer - Stop Wasting Money On AI" />
-  <meta property="og:description" content="Find hidden AI waste, reduce token spend and prove ROI with an enterprise AI cost audit and optimization gateway." />
+  <meta property="og:title" content="TokenOptimizer by BlackRiver AI - Reduce AI Waste" />
+  <meta property="og:description" content="Find the money hidden in your AI infrastructure. Audit token waste, wrong model usage, duplicate requests and oversized contexts." />
   <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="TokenOptimizer - Stop Wasting Money On AI" />
-  <meta name="twitter:description" content="Find hidden AI waste and reduce unnecessary LLM spend." />
+  <meta name="twitter:title" content="TokenOptimizer by BlackRiver AI - Reduce AI Waste" />
+  <meta name="twitter:description" content="Enterprise AI cost audit and optimization platform." />
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -30,19 +30,24 @@
           fontFamily: { sans: ['Inter', 'sans-serif'] },
           colors: {
             ink: '#07111F',
+            ink2: '#0C1B31',
             cloud: '#F6F9FF',
+            river: '#0B1220',
             brand: {
               primary: '#006BFF',
-              dark: '#07111F',
+              cyan: '#21C6FF',
               mint: '#1ED18B',
               lime: '#A7F43D',
               soft: '#E9F2FF',
-              red: '#FF4D4D'
+              red: '#FF4D4D',
+              amber: '#FFB020'
             }
           },
           boxShadow: {
-            glow: '0 20px 70px rgba(0, 107, 255, .18)',
-            soft: '0 24px 80px rgba(7, 17, 31, .10)'
+            glow: '0 24px 80px rgba(0, 107, 255, .18)',
+            mint: '0 24px 80px rgba(30, 209, 139, .16)',
+            soft: '0 24px 80px rgba(7, 17, 31, .10)',
+            hard: '0 30px 90px rgba(7, 17, 31, .22)'
           }
         }
       }
@@ -51,119 +56,151 @@
 
   <style>
     body { font-family: Inter, sans-serif; }
-    .glass { background: rgba(255,255,255,.76); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.7); }
+    .glass { background: rgba(255,255,255,.76); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.72); }
+    .glass-dark { background: rgba(7,17,31,.72); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.08); }
     .mesh { background:
-      radial-gradient(circle at 12% 15%, rgba(0,107,255,.13), transparent 30%),
-      radial-gradient(circle at 82% 18%, rgba(30,209,139,.14), transparent 34%),
-      radial-gradient(circle at 50% 90%, rgba(167,244,61,.12), transparent 32%),
-      linear-gradient(180deg, #F8FBFF 0%, #FFFFFF 52%, #F4F8FF 100%); }
-    .gradient-text { background: linear-gradient(135deg, #07111F 0%, #006BFF 46%, #1ED18B 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      radial-gradient(circle at 10% 12%, rgba(0,107,255,.16), transparent 30%),
+      radial-gradient(circle at 86% 18%, rgba(30,209,139,.16), transparent 34%),
+      radial-gradient(circle at 48% 92%, rgba(167,244,61,.12), transparent 34%),
+      linear-gradient(180deg, #F8FBFF 0%, #FFFFFF 48%, #F4F8FF 100%); }
+    .dark-mesh { background:
+      radial-gradient(circle at 14% 20%, rgba(0,107,255,.35), transparent 28%),
+      radial-gradient(circle at 86% 18%, rgba(30,209,139,.25), transparent 26%),
+      radial-gradient(circle at 48% 92%, rgba(167,244,61,.10), transparent 30%),
+      linear-gradient(180deg, #07111F 0%, #0B1220 100%); }
+    .gradient-text { background: linear-gradient(135deg, #07111F 0%, #006BFF 48%, #1ED18B 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .money-text { background: linear-gradient(135deg, #0F9B63 0%, #006BFF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .white-gradient-text { background: linear-gradient(135deg, #FFFFFF 0%, #AEE7FF 45%, #A7F43D 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .fade-up { opacity: 0; transform: translateY(18px); animation: fadeUp .75s ease forwards; }
     .delay-1 { animation-delay: .08s; } .delay-2 { animation-delay: .16s; } .delay-3 { animation-delay: .24s; }
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     .pulse-dot:before { content: ''; position:absolute; inset:0; border-radius:999px; background:inherit; animation:pulse 2s infinite; }
     @keyframes pulse { from { transform:scale(1); opacity:.45; } to { transform:scale(2.4); opacity:0; } }
     .code { font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; }
+    .grid-bg { background-image: linear-gradient(rgba(7,17,31,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(7,17,31,.05) 1px, transparent 1px); background-size: 34px 34px; }
+    .marquee-mask { mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent); }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-white text-slate-800 antialiased">
+<body class="bg-white text-slate-800 antialiased selection:bg-brand-primary selection:text-white">
 
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 glass transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="h-20 flex items-center justify-between">
-        <a href="#" class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-2xl bg-brand-primary text-white flex items-center justify-center shadow-glow">
-            <i class="fa-solid fa-bolt"></i>
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="relative w-11 h-11 rounded-2xl bg-ink text-white flex items-center justify-center shadow-glow overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-brand-primary via-brand-cyan to-brand-mint opacity-90"></div>
+            <i class="fa-solid fa-bolt relative z-10"></i>
           </div>
-          <span class="text-xl font-black tracking-tight text-ink">TokenOptimizer</span>
+          <div class="leading-tight">
+            <span class="block text-xl font-black tracking-tight text-ink">TokenOptimizer</span>
+            <span class="block text-[11px] uppercase tracking-[.22em] text-slate-400 font-black">by BlackRiver AI</span>
+          </div>
         </a>
-        <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
-          <a href="#problem" class="hover:text-brand-primary">Problem</a>
-          <a href="#audit" class="hover:text-brand-primary">Audit</a>
-          <a href="#platform" class="hover:text-brand-primary">Platform</a>
-          <a href="#roi" class="hover:text-brand-primary">ROI</a>
-          <a href="#pricing" class="hover:text-brand-primary">Pricing</a>
+
+        <div class="hidden lg:flex items-center gap-8 text-sm font-bold text-slate-600">
+          <a href="#problem" class="hover:text-brand-primary transition">Problem</a>
+          <a href="#assessment" class="hover:text-brand-primary transition">Assessment</a>
+          <a href="#audit" class="hover:text-brand-primary transition">Audit</a>
+          <a href="#platform" class="hover:text-brand-primary transition">Platform</a>
+          <a href="#use-cases" class="hover:text-brand-primary transition">Use Cases</a>
+          <a href="#pricing" class="hover:text-brand-primary transition">Pricing</a>
           <a href="#contact" class="px-5 py-2.5 rounded-xl bg-ink text-white hover:bg-brand-primary transition shadow-soft">Request Audit</a>
         </div>
-        <button id="mobile-menu-btn" class="md:hidden text-ink text-2xl" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        <button id="mobile-menu-btn" class="lg:hidden text-ink text-2xl" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
       </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200 shadow-lg">
-      <div class="px-5 py-5 space-y-3 font-semibold text-slate-700">
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-200 shadow-lg">
+      <div class="px-5 py-5 space-y-3 font-bold text-slate-700">
         <a href="#problem" class="block">Problem</a>
+        <a href="#assessment" class="block">Assessment</a>
         <a href="#audit" class="block">Audit</a>
         <a href="#platform" class="block">Platform</a>
-        <a href="#roi" class="block">ROI</a>
+        <a href="#use-cases" class="block">Use Cases</a>
         <a href="#pricing" class="block">Pricing</a>
         <a href="#contact" class="block text-brand-primary">Request Audit</a>
       </div>
     </div>
   </nav>
 
-  <section class="mesh pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="mesh pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden relative">
+    <div class="absolute inset-0 grid-bg opacity-50"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
       <div class="grid lg:grid-cols-2 gap-14 items-center">
         <div class="fade-up">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-blue-100 shadow-sm text-brand-primary text-sm font-bold mb-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-blue-100 shadow-sm text-brand-primary text-sm font-black mb-6">
             <span class="relative flex h-2.5 w-2.5"><span class="pulse-dot absolute h-full w-full rounded-full bg-brand-mint"></span><span class="relative h-2.5 w-2.5 rounded-full bg-brand-mint"></span></span>
             Enterprise AI Cost Intelligence
           </div>
-          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black leading-[.96] tracking-tight text-ink mb-7">
-            Stop Wasting Money <span class="gradient-text">On AI.</span>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black leading-[.94] tracking-tight text-ink mb-7">
+            Your AI bill is bigger than it should be.
           </h1>
+
           <p class="text-lg sm:text-xl text-slate-600 max-w-xl mb-8 leading-relaxed">
-            Most companies are paying for millions of useless tokens every year. TokenOptimizer audits, measures and removes unnecessary AI spend across OpenAI, Claude, Gemini, copilots, agents and internal LLM systems.
+            TokenOptimizer by BlackRiver AI identifies, measures and eliminates unnecessary AI spend across OpenAI, Claude, Gemini, copilots, agents, RAG pipelines and internal LLM systems.
           </p>
+
           <div class="flex flex-col sm:flex-row gap-4 mb-8">
-            <a href="#contact" class="inline-flex justify-center items-center gap-2 px-8 py-4 rounded-xl bg-ink text-white font800 hover:bg-brand-primary transition shadow-soft">
-              Request Free AI Cost Audit <i class="fa-solid fa-arrow-right"></i>
+            <a href="#contact" class="inline-flex justify-center items-center gap-2 px-8 py-4 rounded-xl bg-ink text-white font-black hover:bg-brand-primary transition shadow-hard">
+              Request Free AI Cost Assessment <i class="fa-solid fa-arrow-right"></i>
             </a>
-            <a href="#roi" class="inline-flex justify-center items-center px-8 py-4 rounded-xl bg-white border border-slate-200 text-ink font800 hover:border-brand-primary hover:text-brand-primary transition shadow-sm">
+            <a href="#roi" class="inline-flex justify-center items-center px-8 py-4 rounded-xl bg-white border border-slate-200 text-ink font-black hover:border-brand-primary hover:text-brand-primary transition shadow-sm">
               Calculate Savings
             </a>
           </div>
-          <div class="flex flex-wrap gap-3 text-sm text-slate-500 font-semibold">
-            <span class="px-3 py-1 rounded-full bg-white border border-slate-200">No code rewrite</span>
+
+          <div class="flex flex-wrap gap-3 text-sm text-slate-500 font-bold">
+            <span class="px-3 py-1 rounded-full bg-white border border-slate-200">No code rewrite for assessment</span>
             <span class="px-3 py-1 rounded-full bg-white border border-slate-200">Board-ready reports</span>
             <span class="px-3 py-1 rounded-full bg-white border border-slate-200">Gateway optional</span>
           </div>
         </div>
 
         <div class="relative fade-up delay-1">
-          <div class="absolute -inset-4 bg-gradient-to-br from-blue-200 via-white to-emerald-200 rounded-[2rem] blur-2xl opacity-70"></div>
+          <div class="absolute -inset-4 bg-gradient-to-br from-blue-200 via-white to-emerald-200 rounded-[2rem] blur-2xl opacity-80"></div>
           <div class="relative bg-white rounded-[2rem] shadow-glow border border-slate-200 overflow-hidden">
             <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
               <div class="flex gap-2"><span class="w-3 h-3 bg-red-400 rounded-full"></span><span class="w-3 h-3 bg-yellow-400 rounded-full"></span><span class="w-3 h-3 bg-green-400 rounded-full"></span></div>
-              <span class="text-xs text-slate-400 code">tokenoptimizer.io/audit</span>
+              <span class="text-xs text-slate-400 code">blackriver.ai/audit-report</span>
             </div>
             <div class="p-6 sm:p-8">
-              <div class="mb-7">
-                <p class="text-sm font800 text-slate-500 uppercase tracking-wider mb-2">Estimated Annual AI Waste</p>
-                <div class="text-5xl sm:text-6xl font-black money-text">€1.84M</div>
-                <p class="text-sm text-slate-500 mt-2">Detected from oversized contexts, repeated requests and wrong model selection.</p>
+              <div class="flex items-start justify-between gap-4 mb-7">
+                <div>
+                  <p class="text-sm font-black text-slate-500 uppercase tracking-wider mb-2">Estimated Annual AI Waste</p>
+                  <div class="text-5xl sm:text-6xl font-black money-text">€1.84M</div>
+                  <p class="text-xs text-slate-400 mt-2">Illustrative example based on typical enterprise AI deployments.</p>
+                </div>
+                <span class="hidden sm:inline-flex px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-black border border-emerald-100">Board-ready</span>
               </div>
+
               <div class="grid grid-cols-2 gap-4 mb-6">
                 <div class="rounded-2xl bg-slate-50 border border-slate-100 p-4">
-                  <p class="text-xs text-slate-500 mb-1">Current monthly spend</p>
+                  <p class="text-xs text-slate-500 mb-1 font-bold">Current monthly spend</p>
                   <p class="text-2xl font-black text-ink">€312k</p>
                 </div>
                 <div class="rounded-2xl bg-emerald-50 border border-emerald-100 p-4">
-                  <p class="text-xs text-emerald-700 mb-1">Potential reduction</p>
+                  <p class="text-xs text-emerald-700 mb-1 font-bold">Potential reduction</p>
                   <p class="text-2xl font-black text-emerald-700">59%</p>
                 </div>
               </div>
-              <div class="space-y-3">
-                <div class="flex items-center justify-between p-4 rounded-2xl bg-white border border-slate-100 shadow-sm">
-                  <div><p class="font800 text-ink">Oversized agent context</p><p class="text-sm text-slate-500">Claude / Cursor / internal agents</p></div><span class="font-black text-red-500">€640k</span>
+
+              <div class="space-y-3 mb-5">
+                <div class="flex items-center justify-between gap-4 p-4 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                  <div><p class="font-black text-ink">Oversized agent context</p><p class="text-sm text-slate-500">Claude / Cursor / internal agents</p></div><span class="font-black text-red-500">€640k</span>
                 </div>
-                <div class="flex items-center justify-between p-4 rounded-2xl bg-white border border-slate-100 shadow-sm">
-                  <div><p class="font800 text-ink">Duplicate requests</p><p class="text-sm text-slate-500">Repeated prompts and workflows</p></div><span class="font-black text-red-500">€410k</span>
+                <div class="flex items-center justify-between gap-4 p-4 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                  <div><p class="font-black text-ink">Duplicate requests</p><p class="text-sm text-slate-500">Repeated prompts and workflows</p></div><span class="font-black text-red-500">€410k</span>
                 </div>
-                <div class="flex items-center justify-between p-4 rounded-2xl bg-white border border-slate-100 shadow-sm">
-                  <div><p class="font800 text-ink">Wrong model selection</p><p class="text-sm text-slate-500">Premium models used for cheap tasks</p></div><span class="font-black text-red-500">€790k</span>
+                <div class="flex items-center justify-between gap-4 p-4 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                  <div><p class="font-black text-ink">Wrong model selection</p><p class="text-sm text-slate-500">Premium models used for cheap tasks</p></div><span class="font-black text-red-500">€790k</span>
                 </div>
               </div>
+
+              <a href="#contact" class="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-ink text-white font-black hover:bg-brand-primary transition">
+                Get this report for your company <i class="fa-solid fa-arrow-right"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -174,10 +211,28 @@
   <section class="py-8 bg-white border-y border-slate-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-5 text-center">
-        <div><div class="text-3xl font-black text-ink">35-70%</div><p class="text-sm text-slate-500 font-semibold">unnecessary tokens</p></div>
-        <div><div class="text-3xl font-black text-ink">20-40%</div><p class="text-sm text-slate-500 font-semibold">duplicate requests</p></div>
-        <div><div class="text-3xl font-black text-ink">50-80%</div><p class="text-sm text-slate-500 font-semibold">possible reduction</p></div>
-        <div><div class="text-3xl font-black text-ink">€50k-€5M+</div><p class="text-sm text-slate-500 font-semibold">annual savings range</p></div>
+        <div><div class="text-3xl font-black text-ink">35-70%</div><p class="text-sm text-slate-500 font-bold">potential unnecessary tokens</p></div>
+        <div><div class="text-3xl font-black text-ink">20-40%</div><p class="text-sm text-slate-500 font-bold">duplicate request patterns</p></div>
+        <div><div class="text-3xl font-black text-ink">50-80%</div><p class="text-sm text-slate-500 font-bold">possible targeted reduction</p></div>
+        <div><div class="text-3xl font-black text-ink">€50k-€5M+</div><p class="text-sm text-slate-500 font-bold">annual savings range</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-xs uppercase tracking-[.25em] font-black text-slate-400 mb-8">Works across the AI stack your teams already use</p>
+      <div class="marquee-mask no-scrollbar flex flex-wrap justify-center gap-4 text-sm font-black text-slate-500">
+        <span class="px-4 py-2 rounded-full bg-cloud border border-slate-100">OpenAI</span>
+        <span class="px-4 py-2 rounded-full bg-cloud border border-slate-100">Anthropic Claude</span>
+        <span class="px-4 py-2 rounded-full bg-cloud border border-slate-100">Google Gemini</span>
+        <span class="px-4 py-2 rounded-full bg-cloud border border-slate-100">Mistral</span>
+        <span class="px-4 py-2 rounded-full bg-cloud border border-slate-100">Groq</span>
+        <span class="px-4 py-2 rounded-full bg-cloud border border-slate-100">Cursor</span>
+        <span class="px-4 py-2 rounded-full bg-cloud border border-slate-100">GitHub Copilot</span>
+        <span class="px-4 py-2 rounded-full bg-cloud border border-slate-100">LangChain</span>
+        <span class="px-4 py-2 rounded-full bg-cloud border border-slate-100">LlamaIndex</span>
+        <span class="px-4 py-2 rounded-full bg-cloud border border-slate-100">Internal Agents</span>
       </div>
     </div>
   </section>
@@ -193,17 +248,46 @@
         <div class="p-7 rounded-3xl bg-cloud border border-slate-100 hover:shadow-soft transition">
           <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-500 flex items-center justify-center mb-5"><i class="fa-solid fa-fire"></i></div>
           <h3 class="text-xl font-black text-ink mb-3">Token waste</h3>
-          <p class="text-slate-600">Oversized contexts, repeated prompts, uncompressed history and agent loops create invisible cost leakage.</p>
+          <p class="text-slate-600">Oversized contexts, repeated prompts, uncompressed histories and agent loops create invisible cost leakage.</p>
         </div>
         <div class="p-7 rounded-3xl bg-cloud border border-slate-100 hover:shadow-soft transition">
           <div class="w-12 h-12 rounded-2xl bg-blue-100 text-brand-primary flex items-center justify-center mb-5"><i class="fa-solid fa-layer-group"></i></div>
           <h3 class="text-xl font-black text-ink mb-3">Model waste</h3>
-          <p class="text-slate-600">Expensive models are often used for tasks that could run on cheaper providers or smaller models.</p>
+          <p class="text-slate-600">Premium models are often used for tasks that could run on cheaper providers or smaller models without business impact.</p>
         </div>
         <div class="p-7 rounded-3xl bg-cloud border border-slate-100 hover:shadow-soft transition">
           <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-5"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
           <h3 class="text-xl font-black text-ink mb-3">No accountability</h3>
-          <p class="text-slate-600">Executives see a growing AI bill, but not the exact waste, owner, source, workflow and possible savings.</p>
+          <p class="text-slate-600">Executives see a growing AI bill, but not the exact source, owner, workflow and possible saving for each cost center.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="assessment" class="py-20 bg-ink text-white dark-mesh">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-brand-lime font-black uppercase tracking-wider text-sm mb-3">Free assessment</p>
+          <h2 class="text-3xl sm:text-5xl font-black tracking-tight mb-6">Send your monthly AI spend. We estimate the waste.</h2>
+          <p class="text-lg text-slate-300 mb-8">No deployment. No migration. No board meeting. Give us a high-level view of your AI usage and we will show where savings are likely hiding.</p>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div class="glass-dark rounded-2xl p-5"><p class="text-3xl font-black white-gradient-text">01</p><p class="font-black mt-2">Spend range</p><p class="text-sm text-slate-400 mt-1">Monthly AI cost by provider.</p></div>
+            <div class="glass-dark rounded-2xl p-5"><p class="text-3xl font-black white-gradient-text">02</p><p class="font-black mt-2">Usage shape</p><p class="text-sm text-slate-400 mt-1">Apps, agents, teams, APIs.</p></div>
+            <div class="glass-dark rounded-2xl p-5"><p class="text-3xl font-black white-gradient-text">03</p><p class="font-black mt-2">Waste estimate</p><p class="text-sm text-slate-400 mt-1">Likely savings and next step.</p></div>
+          </div>
+        </div>
+        <div class="bg-white text-slate-800 rounded-[2rem] p-7 shadow-hard">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-11 h-11 rounded-2xl bg-brand-primary text-white flex items-center justify-center"><i class="fa-solid fa-calculator"></i></div>
+            <div><h3 class="text-xl font-black text-ink">Free AI Cost Assessment</h3><p class="text-sm text-slate-500">Built for your first sales conversation</p></div>
+          </div>
+          <div class="space-y-4">
+            <div class="p-4 rounded-2xl bg-cloud border border-slate-100"><p class="text-sm font-black text-slate-500">Input</p><p class="text-2xl font-black text-ink">“We spend around €80k/month on AI.”</p></div>
+            <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100"><p class="text-sm font-black text-emerald-700">Output</p><p class="text-2xl font-black text-emerald-700">Potential waste: €384k-€768k/year</p></div>
+            <div class="p-4 rounded-2xl bg-blue-50 border border-blue-100"><p class="text-sm font-black text-brand-primary">Next step</p><p class="text-2xl font-black text-brand-primary">Board-ready audit proposal</p></div>
+          </div>
+          <a href="#contact" class="mt-6 flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-ink text-white font-black hover:bg-brand-primary transition">Request Free Assessment <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -218,14 +302,14 @@
           <p class="text-lg text-slate-600 mb-8">TokenOptimizer is not just a gateway. It is a cost intelligence layer for enterprise AI usage. We audit the spend, identify waste, quantify savings and deliver an executive report.</p>
           <div class="space-y-4">
             <div class="flex gap-4"><div class="w-9 h-9 rounded-xl bg-white text-brand-primary flex items-center justify-center font-black shadow-sm">1</div><div><h4 class="font-black text-ink">Map AI usage</h4><p class="text-slate-600">Providers, applications, copilots, agents, teams and workflows.</p></div></div>
-            <div class="flex gap-4"><div class="w-9 h-9 rounded-xl bg-white text-brand-primary flex items-center justify-center font-black shadow-sm">2</div><div><h4 class="font-black text-ink">Detect waste</h4><p class="text-slate-600">Duplicate calls, oversized prompts, wrong model choice, unused context, unnecessary RAG payloads.</p></div></div>
-            <div class="flex gap-4"><div class="w-9 h-9 rounded-xl bg-white text-brand-primary flex items-center justify-center font-black shadow-sm">3</div><div><h4 class="font-black text-ink">Deliver the savings plan</h4><p class="text-slate-600">A board-ready report with estimated yearly waste and implementation roadmap.</p></div></div>
+            <div class="flex gap-4"><div class="w-9 h-9 rounded-xl bg-white text-brand-primary flex items-center justify-center font-black shadow-sm">2</div><div><h4 class="font-black text-ink">Detect waste</h4><p class="text-slate-600">Duplicate calls, oversized prompts, wrong model choice, unused context and unnecessary RAG payloads.</p></div></div>
+            <div class="flex gap-4"><div class="w-9 h-9 rounded-xl bg-white text-brand-primary flex items-center justify-center font-black shadow-sm">3</div><div><h4 class="font-black text-ink">Deliver the savings plan</h4><p class="text-slate-600">A board-ready report with yearly waste, owners, priorities and implementation roadmap.</p></div></div>
           </div>
         </div>
         <div class="bg-white rounded-[2rem] p-7 shadow-soft border border-slate-100">
           <div class="flex items-center justify-between mb-6">
             <div><h3 class="text-xl font-black text-ink">Executive AI Waste Report</h3><p class="text-sm text-slate-500">Board summary</p></div>
-            <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-black">READY</span>
+            <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-black">SAMPLE</span>
           </div>
           <div class="space-y-5">
             <div>
@@ -245,7 +329,50 @@
             <div class="rounded-2xl bg-slate-50 p-5"><p class="text-sm text-slate-500">Annual spend</p><p class="text-3xl font-black text-ink">€3.1M</p></div>
             <div class="rounded-2xl bg-emerald-50 p-5"><p class="text-sm text-emerald-700">Potential savings</p><p class="text-3xl font-black text-emerald-700">€1.84M</p></div>
           </div>
+          <p class="text-xs text-slate-400 mt-4">Sample numbers shown for illustration. Real output depends on your traffic, providers and workflows.</p>
           <a href="#contact" class="mt-6 flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-ink text-white font-black hover:bg-brand-primary transition">Get this report for your company <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="use-cases" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <p class="text-brand-primary font-black uppercase tracking-wider text-sm mb-3">Who uses it</p>
+        <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-ink mb-5">Built for every team that pays for AI.</h2>
+        <p class="text-lg text-slate-600">Different buyers. Same pain: the AI bill grows faster than the visibility.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-7 rounded-3xl bg-cloud border border-slate-100 hover:shadow-soft transition"><i class="fa-solid fa-rocket text-brand-primary text-2xl mb-5"></i><h3 class="text-xl font-black text-ink mb-3">AI startups</h3><p class="text-slate-600 text-sm">Protect margin before API costs eat the business model.</p></div>
+        <div class="p-7 rounded-3xl bg-cloud border border-slate-100 hover:shadow-soft transition"><i class="fa-solid fa-building text-brand-primary text-2xl mb-5"></i><h3 class="text-xl font-black text-ink mb-3">Enterprise IT</h3><p class="text-slate-600 text-sm">Control company-wide AI usage across teams and providers.</p></div>
+        <div class="p-7 rounded-3xl bg-cloud border border-slate-100 hover:shadow-soft transition"><i class="fa-solid fa-robot text-brand-primary text-2xl mb-5"></i><h3 class="text-xl font-black text-ink mb-3">Agent teams</h3><p class="text-slate-600 text-sm">Reduce waste from long contexts, RAG payloads and loops.</p></div>
+        <div class="p-7 rounded-3xl bg-cloud border border-slate-100 hover:shadow-soft transition"><i class="fa-solid fa-briefcase text-brand-primary text-2xl mb-5"></i><h3 class="text-xl font-black text-ink mb-3">AI consultancies</h3><p class="text-slate-600 text-sm">Deliver measurable savings reports for clients.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-cloud">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-[2rem] bg-white border border-slate-100 shadow-soft overflow-hidden">
+        <div class="grid lg:grid-cols-2">
+          <div class="p-8 sm:p-12">
+            <p class="text-brand-primary font-black uppercase tracking-wider text-sm mb-3">Why BlackRiver AI</p>
+            <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-ink mb-6">We do not sell more AI. We make existing AI cheaper.</h2>
+            <p class="text-lg text-slate-600 mb-8">Most AI vendors benefit when you consume more tokens. BlackRiver AI is aligned with the opposite outcome: less waste, lower spend, better control.</p>
+            <div class="space-y-4">
+              <div class="flex gap-3"><i class="fa-solid fa-check-circle text-emerald-500 mt-1"></i><p class="text-slate-700"><strong class="text-ink">Independent cost lens:</strong> see AI spend by value, not just volume.</p></div>
+              <div class="flex gap-3"><i class="fa-solid fa-check-circle text-emerald-500 mt-1"></i><p class="text-slate-700"><strong class="text-ink">Executive reporting:</strong> give CFOs, boards and IT leaders a clear savings map.</p></div>
+              <div class="flex gap-3"><i class="fa-solid fa-check-circle text-emerald-500 mt-1"></i><p class="text-slate-700"><strong class="text-ink">Technical execution:</strong> move from audit to live optimization without rebuilding everything.</p></div>
+            </div>
+          </div>
+          <div class="dark-mesh p-8 sm:p-12 text-white flex items-center">
+            <div>
+              <p class="text-brand-lime font-black uppercase tracking-wider text-sm mb-3">Positioning</p>
+              <blockquote class="text-3xl sm:text-4xl font-black leading-tight white-gradient-text">“Every unnecessary token is a small leak. At enterprise scale, leaks become millions.”</blockquote>
+              <p class="text-slate-300 mt-6">TokenOptimizer helps organizations turn AI cost chaos into measurable, controllable infrastructure economics.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -259,15 +386,15 @@
         <p class="text-lg text-slate-600">Deploy TokenOptimizer as a drop-in gateway, analytics layer and policy engine across your AI providers.</p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="p-6 rounded-3xl border border-slate-100 bg-white shadow-sm"><i class="fa-solid fa-route text-brand-primary text-2xl mb-5"></i><h3 class="font-black text-ink mb-2">Cost routing</h3><p class="text-sm text-slate-600">Use the right provider and model for each request.</p></div>
-        <div class="p-6 rounded-3xl border border-slate-100 bg-white shadow-sm"><i class="fa-solid fa-compress text-brand-primary text-2xl mb-5"></i><h3 class="font-black text-ink mb-2">Context reduction</h3><p class="text-sm text-slate-600">Remove useless tokens before they hit the API.</p></div>
-        <div class="p-6 rounded-3xl border border-slate-100 bg-white shadow-sm"><i class="fa-solid fa-memory text-brand-primary text-2xl mb-5"></i><h3 class="font-black text-ink mb-2">Smart caching</h3><p class="text-sm text-slate-600">Avoid paying twice for repeated prompts and workflows.</p></div>
-        <div class="p-6 rounded-3xl border border-slate-100 bg-white shadow-sm"><i class="fa-solid fa-chart-pie text-brand-primary text-2xl mb-5"></i><h3 class="font-black text-ink mb-2">Executive analytics</h3><p class="text-sm text-slate-600">Track savings by provider, team, product and workflow.</p></div>
+        <div class="p-6 rounded-3xl border border-slate-100 bg-white shadow-sm hover:shadow-soft transition"><i class="fa-solid fa-route text-brand-primary text-2xl mb-5"></i><h3 class="font-black text-ink mb-2">Cost routing</h3><p class="text-sm text-slate-600">Use the right provider and model for each request.</p></div>
+        <div class="p-6 rounded-3xl border border-slate-100 bg-white shadow-sm hover:shadow-soft transition"><i class="fa-solid fa-compress text-brand-primary text-2xl mb-5"></i><h3 class="font-black text-ink mb-2">Context reduction</h3><p class="text-sm text-slate-600">Remove useless tokens before they hit the API.</p></div>
+        <div class="p-6 rounded-3xl border border-slate-100 bg-white shadow-sm hover:shadow-soft transition"><i class="fa-solid fa-memory text-brand-primary text-2xl mb-5"></i><h3 class="font-black text-ink mb-2">Smart caching</h3><p class="text-sm text-slate-600">Avoid paying twice for repeated prompts and workflows.</p></div>
+        <div class="p-6 rounded-3xl border border-slate-100 bg-white shadow-sm hover:shadow-soft transition"><i class="fa-solid fa-chart-pie text-brand-primary text-2xl mb-5"></i><h3 class="font-black text-ink mb-2">Executive analytics</h3><p class="text-sm text-slate-600">Track savings by provider, team, product and workflow.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="py-20 bg-ink text-white overflow-hidden">
+  <section class="py-20 bg-ink text-white overflow-hidden dark-mesh">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
@@ -278,6 +405,7 @@
             <li><i class="fa-solid fa-check text-brand-lime mr-3"></i> Streaming and non-streaming responses</li>
             <li><i class="fa-solid fa-check text-brand-lime mr-3"></i> BYOK support for existing provider accounts</li>
             <li><i class="fa-solid fa-check text-brand-lime mr-3"></i> LangChain, LlamaIndex, agents and internal tools</li>
+            <li><i class="fa-solid fa-check text-brand-lime mr-3"></i> Audit mode before live gateway deployment</li>
           </ul>
         </div>
         <div class="rounded-3xl bg-slate-900 border border-white/10 shadow-2xl overflow-hidden">
@@ -301,6 +429,21 @@ const response = await client.chat.completions.create({
     </div>
   </section>
 
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <p class="text-brand-primary font-black uppercase tracking-wider text-sm mb-3">Security & control</p>
+        <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-ink mb-5">Designed for serious AI operations.</h2>
+        <p class="text-lg text-slate-600">Enterprises need savings, but they also need control, traceability and predictable operations.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="p-7 rounded-3xl bg-cloud border border-slate-100"><i class="fa-solid fa-key text-brand-primary text-2xl mb-5"></i><h3 class="text-xl font-black text-ink mb-3">Bring your own keys</h3><p class="text-slate-600">Keep existing provider accounts while TokenOptimizer measures and reduces waste.</p></div>
+        <div class="p-7 rounded-3xl bg-cloud border border-slate-100"><i class="fa-solid fa-shield-halved text-brand-primary text-2xl mb-5"></i><h3 class="text-xl font-black text-ink mb-3">Policy controls</h3><p class="text-slate-600">Define routing, model selection and usage rules by team, product and workflow.</p></div>
+        <div class="p-7 rounded-3xl bg-cloud border border-slate-100"><i class="fa-solid fa-file-lines text-brand-primary text-2xl mb-5"></i><h3 class="text-xl font-black text-ink mb-3">Audit trail</h3><p class="text-slate-600">Keep visibility into requests, savings opportunities and optimization decisions.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section id="roi" class="py-20 bg-cloud">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
@@ -317,6 +460,7 @@ const response = await client.chat.completions.create({
           <div class="p-5 rounded-2xl bg-emerald-50 border border-emerald-100"><p class="text-sm text-emerald-700 font-bold mb-1">Potential waste found</p><p id="annual-savings" class="text-3xl font-black text-emerald-700">€720,000</p></div>
           <div class="p-5 rounded-2xl bg-blue-50 border border-blue-100"><p class="text-sm text-brand-primary font-bold mb-1">Optimized annual cost</p><p id="new-annual-cost" class="text-3xl font-black text-brand-primary">€480,000</p></div>
         </div>
+        <p class="text-xs text-slate-400 text-center mt-5">Calculator assumes 60% potential optimization. Actual savings depend on traffic mix, providers, prompts, context size and workflows.</p>
       </div>
     </div>
   </section>
@@ -325,30 +469,30 @@ const response = await client.chat.completions.create({
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-14">
         <p class="text-brand-primary font-black uppercase tracking-wider text-sm mb-3">Commercial offer</p>
-        <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-ink mb-5">Start with the audit. Scale with the platform.</h2>
+        <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-ink mb-5">Start with the assessment. Scale with the platform.</h2>
       </div>
       <div class="grid md:grid-cols-3 gap-7 max-w-6xl mx-auto">
         <div class="rounded-[2rem] border border-slate-200 p-8 bg-white hover:shadow-soft transition">
-          <h3 class="text-2xl font-black text-ink mb-2">AI Cost Audit</h3>
-          <p class="text-slate-600 mb-6">For companies that want to know how much AI money is being wasted.</p>
-          <div class="text-4xl font-black text-ink mb-6">From €4,900</div>
-          <ul class="space-y-3 text-slate-600 mb-8"><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Usage review</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Waste detection</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Executive report</li></ul>
-          <a href="#contact" class="block text-center py-3 rounded-xl border border-brand-primary text-brand-primary font-black hover:bg-blue-50">Request Audit</a>
+          <h3 class="text-2xl font-black text-ink mb-2">Free Assessment</h3>
+          <p class="text-slate-600 mb-6">For companies that want a first estimate before committing to an audit.</p>
+          <div class="text-4xl font-black text-ink mb-6">Free</div>
+          <ul class="space-y-3 text-slate-600 mb-8"><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> High-level spend review</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Waste estimate</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Recommended next step</li></ul>
+          <a href="#contact" class="block text-center py-3 rounded-xl border border-brand-primary text-brand-primary font-black hover:bg-blue-50">Request Assessment</a>
         </div>
         <div class="rounded-[2rem] border-2 border-brand-primary p-8 bg-white shadow-glow relative md:-translate-y-4">
           <div class="absolute top-0 right-0 rounded-bl-xl rounded-tr-[1.8rem] bg-brand-primary text-white px-4 py-2 text-xs font-black">BEST START</div>
-          <h3 class="text-2xl font-black text-ink mb-2">Audit + Platform</h3>
-          <p class="text-slate-600 mb-6">For teams ready to detect waste and immediately deploy savings.</p>
-          <div class="text-4xl font-black text-ink mb-6">Custom</div>
-          <ul class="space-y-3 text-slate-600 mb-8"><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Everything in Audit</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Gateway deployment</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Routing and caching</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Savings dashboard</li></ul>
-          <a href="#contact" class="block text-center py-3 rounded-xl bg-ink text-white font-black hover:bg-brand-primary">Request Proposal</a>
+          <h3 class="text-2xl font-black text-ink mb-2">AI Cost Audit</h3>
+          <p class="text-slate-600 mb-6">For companies ready to detect waste and receive a board-ready savings report.</p>
+          <div class="text-4xl font-black text-ink mb-6">From €4,900</div>
+          <ul class="space-y-3 text-slate-600 mb-8"><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Usage review</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Waste detection</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Executive report</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Implementation roadmap</li></ul>
+          <a href="#contact" class="block text-center py-3 rounded-xl bg-ink text-white font-black hover:bg-brand-primary">Request Audit</a>
         </div>
         <div class="rounded-[2rem] border border-slate-200 p-8 bg-white hover:shadow-soft transition">
-          <h3 class="text-2xl font-black text-ink mb-2">Enterprise</h3>
-          <p class="text-slate-600 mb-6">For large organizations needing governance, SLA and dedicated support.</p>
-          <div class="text-4xl font-black text-ink mb-6">Contact us</div>
-          <ul class="space-y-3 text-slate-600 mb-8"><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Dedicated infrastructure</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> SLA guarantee</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Board reporting</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Account manager</li></ul>
-          <a href="#contact" class="block text-center py-3 rounded-xl border border-brand-primary text-brand-primary font-black hover:bg-blue-50">Contact Sales</a>
+          <h3 class="text-2xl font-black text-ink mb-2">Audit + Platform</h3>
+          <p class="text-slate-600 mb-6">For teams ready to deploy live savings and enterprise controls.</p>
+          <div class="text-4xl font-black text-ink mb-6">Custom</div>
+          <ul class="space-y-3 text-slate-600 mb-8"><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Gateway deployment</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Routing and caching</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Savings dashboard</li><li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> SLA and support options</li></ul>
+          <a href="#contact" class="block text-center py-3 rounded-xl border border-brand-primary text-brand-primary font-black hover:bg-blue-50">Request Proposal</a>
         </div>
       </div>
     </div>
@@ -358,29 +502,41 @@ const response = await client.chat.completions.create({
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-black text-ink text-center mb-10">Frequently Asked Questions</h2>
       <div class="space-y-4">
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden"><button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-black text-ink">Is TokenOptimizer only a gateway?<i class="fa-solid fa-chevron-down text-slate-400"></i></button><div class="faq-content hidden px-6 pb-5 text-slate-600">No. The gateway is one deployment option. The first value is the audit: identifying where AI spend is wasted, who owns it and how much can be recovered.</div></div>
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden"><button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-black text-ink">Do we need to change our applications?<i class="fa-solid fa-chevron-down text-slate-400"></i></button><div class="faq-content hidden px-6 pb-5 text-slate-600">For the audit, no. For live optimization, most integrations work by changing the API base URL or adding TokenOptimizer between your applications and providers.</div></div>
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden"><button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-black text-ink">Can we keep our existing provider accounts?<i class="fa-solid fa-chevron-down text-slate-400"></i></button><div class="faq-content hidden px-6 pb-5 text-slate-600">Yes. BYOK is supported. You can keep your OpenAI, Anthropic, Google, Mistral or other provider accounts while TokenOptimizer measures and reduces waste.</div></div>
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden"><button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-black text-ink">Is TokenOptimizer only a gateway?<i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i></button><div class="faq-content hidden px-6 pb-5 text-slate-600">No. The gateway is one deployment option. The first value is the assessment and audit: identifying where AI spend is wasted, who owns it and how much can be recovered.</div></div>
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden"><button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-black text-ink">Do we need to change our applications?<i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i></button><div class="faq-content hidden px-6 pb-5 text-slate-600">For the assessment, no. For live optimization, most integrations work by changing the API base URL or adding TokenOptimizer between your applications and providers.</div></div>
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden"><button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-black text-ink">Can we keep our existing provider accounts?<i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i></button><div class="faq-content hidden px-6 pb-5 text-slate-600">Yes. BYOK is supported. You can keep your OpenAI, Anthropic, Google, Mistral or other provider accounts while TokenOptimizer measures and reduces waste.</div></div>
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden"><button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-black text-ink">What do you need for the free assessment?<i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i></button><div class="faq-content hidden px-6 pb-5 text-slate-600">A rough monthly spend range, main providers and basic usage pattern are enough for a first estimate. A paid audit goes deeper and produces a board-ready report.</div></div>
       </div>
     </div>
   </section>
 
   <section id="contact" class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="rounded-[2rem] bg-ink text-white p-8 sm:p-12 shadow-soft overflow-hidden relative">
+      <div class="rounded-[2rem] bg-ink text-white p-8 sm:p-12 shadow-hard overflow-hidden relative dark-mesh">
         <div class="absolute -right-20 -top-20 w-72 h-72 rounded-full bg-brand-primary/25 blur-3xl"></div>
         <div class="relative grid lg:grid-cols-2 gap-10 items-start">
           <div>
-            <p class="text-brand-lime font-black uppercase tracking-wider text-sm mb-3">Request demo</p>
+            <p class="text-brand-lime font-black uppercase tracking-wider text-sm mb-3">Request assessment</p>
             <h2 class="text-3xl sm:text-5xl font-black tracking-tight mb-5">Find out how much AI money you are wasting.</h2>
-            <p class="text-slate-300">Send your request and we will prepare a demo, audit proposal or invoice depending on your needs.</p>
+            <p class="text-slate-300 mb-6">Send your request and we will prepare a free assessment, audit proposal or invoice depending on your needs.</p>
+            <div class="space-y-3 text-sm text-slate-300 font-semibold">
+              <p><i class="fa-solid fa-check text-brand-lime mr-2"></i> Response prepared for decision makers</p>
+              <p><i class="fa-solid fa-check text-brand-lime mr-2"></i> Works for SaaS, enterprise IT and internal AI teams</p>
+              <p><i class="fa-solid fa-check text-brand-lime mr-2"></i> Audit and implementation options available</p>
+            </div>
           </div>
           <form id="contact-form" class="bg-white text-slate-800 rounded-3xl p-6 space-y-4">
             <input id="name" required type="text" placeholder="Name" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary" />
-            <input id="email" required type="email" placeholder="Email" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary" />
+            <input id="email" required type="email" placeholder="Work email" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary" />
             <input id="company" type="text" placeholder="Company" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary" />
-            <textarea id="message" rows="4" placeholder="We spend around €... per month on AI and want an audit." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary"></textarea>
-            <label class="flex items-center gap-2 text-sm text-slate-600"><input id="invoice" type="checkbox" class="rounded text-brand-primary" /> Send me an invoice / proposal directly.</label>
+            <select id="interest" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary bg-white">
+              <option>Free AI cost assessment</option>
+              <option>Paid AI cost audit</option>
+              <option>Audit + platform deployment</option>
+              <option>Enterprise partnership</option>
+            </select>
+            <textarea id="message" rows="4" placeholder="We spend around €... per month on AI and want to estimate waste." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary"></textarea>
+            <label class="flex items-center gap-2 text-sm text-slate-600"><input id="invoice" type="checkbox" class="rounded text-brand-primary" /> Send me a proposal / invoice directly.</label>
             <button type="submit" class="w-full py-4 rounded-xl bg-brand-primary text-white font-black hover:bg-blue-700 transition">Submit Request</button>
           </form>
         </div>
@@ -389,10 +545,20 @@ const response = await client.chat.completions.create({
   </section>
 
   <footer class="bg-white border-t border-slate-100 py-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between gap-6 text-sm text-slate-500">
-      <div><div class="font-black text-ink text-lg mb-2"><i class="fa-solid fa-bolt text-brand-primary mr-2"></i>TokenOptimizer</div><p>Enterprise AI Cost Optimization Platform.</p></div>
-      <div class="flex gap-6"><a href="#" class="hover:text-brand-primary">Privacy</a><a href="#" class="hover:text-brand-primary">Terms</a><a href="#" class="hover:text-brand-primary">Contact</a></div>
-      <p>© 2026 TokenOptimizer LTD. London, United Kingdom.</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between gap-8 text-sm text-slate-500">
+        <div>
+          <div class="font-black text-ink text-lg mb-2"><i class="fa-solid fa-bolt text-brand-primary mr-2"></i>TokenOptimizer <span class="text-slate-400 font-bold">by BlackRiver AI</span></div>
+          <p>Enterprise AI Cost Audit & Optimization Platform.</p>
+          <p class="mt-2 text-xs">TokenOptimizer is a product of BlackRiver AI Ltd.</p>
+        </div>
+        <div class="flex flex-wrap gap-6 font-semibold"><a href="#" class="hover:text-brand-primary">Privacy</a><a href="#" class="hover:text-brand-primary">Terms</a><a href="#contact" class="hover:text-brand-primary">Contact</a></div>
+        <div class="md:text-right">
+          <p>© 2026 BlackRiver AI Ltd.</p>
+          <p>Company Number: 17291854</p>
+          <p>London, United Kingdom</p>
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -400,6 +566,10 @@ const response = await client.chat.completions.create({
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
 
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -428,8 +598,13 @@ const response = await client.chat.completions.create({
       btn.addEventListener('click', () => {
         const content = btn.nextElementSibling;
         const icon = btn.querySelector('i');
-        content.classList.toggle('hidden');
-        icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        const isHidden = content.classList.contains('hidden');
+        document.querySelectorAll('.faq-content').forEach(item => item.classList.add('hidden'));
+        document.querySelectorAll('.faq-btn i').forEach(item => item.style.transform = 'rotate(0deg)');
+        if (isHidden) {
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(180deg)';
+        }
       });
     });
 
@@ -446,11 +621,16 @@ const response = await client.chat.completions.create({
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "TokenOptimizer",
+    "alternateName": "TokenOptimizer by BlackRiver AI",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
     "description": "Enterprise AI cost audit and optimization platform for reducing unnecessary LLM and token spend.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "BlackRiver AI Ltd"
+    },
     "offers": { "@type": "Offer", "price": "4900", "priceCurrency": "EUR" },
-    "featureList": "AI Cost Audit, Token Waste Detection, Smart Routing, Context Reduction, Caching, Executive Reporting"
+    "featureList": "AI Cost Audit, Token Waste Detection, Smart Routing, Context Reduction, Caching, Executive Reporting, BYOK"
   }
   </script>
 </body>
